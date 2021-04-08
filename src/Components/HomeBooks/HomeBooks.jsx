@@ -38,7 +38,7 @@ const HomeBooks = () => {
     ]
 
     const { Meta } = Card;
-    console.log(books.name)
+
 
     return (
         <>
