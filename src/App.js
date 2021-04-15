@@ -1,6 +1,6 @@
 import HomeBooks from './Components/HomeBooks/HomeBooks'
 // import './App.css';
-import Navbar from './Components/Navbar'
+import Navbar from './Components/Navbar/Navbar'
 import Search from './Components/Search'
 import MyBooks from './Components/MyBooks'
 import {
@@ -10,7 +10,11 @@ import {
   Link
 } from "react-router-dom";
 
+
 import BookDescription from './Components/BookDescription'
+import FilterSelect from './Components/Filter/FilterSelect'
+
+
 
 const App =() => {
   return (
@@ -25,6 +29,7 @@ const App =() => {
                   <Route path ='/Search' component={Search} />
                  <Route path ='/MyBooks' component={MyBooks} />
                  <Route path ='/book/:id' component={BookDescription} />
+               <Route path ='/FilterSelect' component={FilterSelect} />
 
 
    </Switch>

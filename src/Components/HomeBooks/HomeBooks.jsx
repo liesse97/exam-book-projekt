@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Col, Row } from 'antd';
 import 'antd/dist/antd.css';
-import './HomeBooks.css'
+import './HomeBooks.css';
 
 const HomeBooks = () => {
     const books = [
@@ -40,8 +40,23 @@ const HomeBooks = () => {
     const { Meta } = Card;
 
 
+//     const nextProperty = () => {
+//     const newIndex = this.state.property.index+1;
+//     this.setState({y
+//       property: data.properties[newIndex]
+//     })
+//   }
+
+//  const prevProperty = () => {
+//     const newIndex = this.state.property.index-1;
+//     this.setState({
+//       property: data.properties[newIndex]
+//     })
+//   }
+
     return (
-        <>
+        <div>
+            
             <div className="site-card-wrapper">
 
                 <h1>Recentely  Added</h1>
@@ -82,12 +97,16 @@ const HomeBooks = () => {
                     })
                     }
 
+
                     <i class="fas fa-chevron-right"></i>
 
 
 
+
                 </Row>
-            </div>
+
+                </div>
+            
             <h1>Recommended</h1>
 
             <Row gutter={16}>
@@ -174,7 +193,7 @@ const HomeBooks = () => {
 
             </Row>
 
-        </>
+            </div>
     )
 }
 

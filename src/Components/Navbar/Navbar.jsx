@@ -3,10 +3,13 @@ import {
   Link
 } from "react-router-dom";
 
+import './Navbar.scss'
+
 const Navbar =()=> {
     return (
         <nav>
-<h3>Logo</h3>
+            <h3>Logo</h3>
+
 <ul>
     <Link to='/'>
     <li>Home</li>
@@ -19,9 +22,17 @@ const Navbar =()=> {
     <Link to='/Search'>
 <li>Search</li>
  </Link>
+  <Link to='/FilterSelect'>
+<li>Filter</li>
+ </Link>
 
 </ul>
+{/* <div>
+ <button>Login</button>
+<button>Logout</button>
+</div> */}
         </nav>
+       
     )
 }
 

@@ -1,0 +1,35 @@
+//Styles for Search Components
+.searchBooks {
+  text-align: center;
+  .search {
+    display: flex;
+
+    justify-content: center;
+  }
+  img {
+    // padding: 0.6em;
+    margin: 0.8em;
+    height: 260px !important;
+    width: 180px !important;
+  }
+}
+
+//Bookdescription component styling
+.detail {
+  padding: 0.1em 2em;
+  display: flex;
+  // justify-content: space-evenly;
+
+  .text {
+    max-width: 600px;
+    padding-left: 3em;
+  }
+  img {
+    width: 160px;
+    height: 220px;
+  }
+  button {
+    display: block;
+    margin-top: 0.7em;
+  }
+}

@@ -1,10 +1,10 @@
 import React from 'react'
+import Chat from './chat/chat'
 
 function MyBooks() {
     return (
         <div>
-            <h2>MyBooks</h2>
-            
+<Chat />            
         </div>
     )
 }
