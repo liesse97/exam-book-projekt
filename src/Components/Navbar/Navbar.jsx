@@ -8,23 +8,30 @@ import './Navbar.scss'
 const Navbar =()=> {
     return (
         <nav>
-            <h3>Logo</h3>
+            {/* <h3>Logo</h3> */}
 
 <ul>
     <Link to='/'>
-    <li>Home</li>
+    {/* <li>Home</li> */}
+    <li>Books</li>
     </Link>
 
-        <Link to='/MyBooks'>
-<li>My Books</li>
- </Link>
-
-    <Link to='/Search'>
-<li>Search</li>
- </Link>
-  <Link to='/FilterSelect'>
+     <Link to='/FilterSelect'>
 <li>Filter</li>
  </Link>
+
+        <Link to='/MyBooks'>
+{/* <li>My Books</li> */}
+<li>Community</li>
+ </Link>
+
+    {/* <Link to='/Search'>
+<li>Search</li>
+ </Link> */}
+   <Link>
+<li>Login</li>
+ </Link>
+ 
 
 </ul>
 {/* <div>

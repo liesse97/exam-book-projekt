@@ -1,6 +1,16 @@
+body {
+  background: url("https://miro.medium.com/max/1838/1*fRIaYhhRrNGEECoIocm2Nw.jpeg")
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 //Styles for Search Components
 .searchBooks {
   text-align: center;
+  margin: 0 94px;
   .search {
     display: flex;
 
@@ -8,17 +18,17 @@
   }
   img {
     // padding: 0.6em;
-    margin: 0.8em;
-    height: 260px !important;
-    width: 180px !important;
+    margin: 1.5em;
+    height: 300px !important;
+    width: 200px !important;
   }
 }
 
 //Bookdescription component styling
 .detail {
-  padding: 0.1em 2em;
   display: flex;
-  // justify-content: space-evenly;
+  padding: 0.1em 12em;
+  justify-content: space-between;
 
   .text {
     max-width: 600px;

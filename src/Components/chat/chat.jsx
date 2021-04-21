@@ -1,6 +1,8 @@
   
 import React, { useRef, useState } from 'react';
-//   import './Chat.scss';
+  import './Chat.scss';
+// import styles from '../Book.module.scss';
+
 
 
 import firebase from 'firebase/app';
@@ -37,10 +39,10 @@ function Chat() {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="App">
+    <div className='App'>
       <header>
-        <h1>💬</h1>
-        <SignOut />
+        {/* <h1>💬</h1>
+        <SignOut /> */}
       </header>
 
       <section>
@@ -100,7 +102,8 @@ function ChatRoom() {
     dummy.current.scrollIntoView({ behavior: 'smooth' });
   }
 
-  return (<>
+  return (
+  <div className="Form">
     <main>
 
       {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
@@ -113,10 +116,12 @@ function ChatRoom() {
 
       <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
 
-      <button type="submit" disabled={!formValue}>🕊️</button>
+      {/* <button type="submit" disabled={!formValue}>🕊️</button> */}
+      <button type="submit" disabled={!formValue}>Send</button>
 
     </form>
-  </>)
+  </div>
+  )
 }
 
 
@@ -128,7 +133,9 @@ function ChatMessage(props) {
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
   return (<>
+    {/* <div className={`message ${messageClass}`}> */}
     <div className={`message ${messageClass}`}>
+      
       <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
       <p>{text}</p>
     </div>

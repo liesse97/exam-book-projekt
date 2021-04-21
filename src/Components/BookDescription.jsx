@@ -39,7 +39,7 @@ const BookDescription =({match})=> {
           <img    
                                         // src={book.imageLinks.thumbnail}
                                         alt="warning"
-                                         src={book.imageLinks ===undefined ?"" :book.imageLinks.thumbnail}
+                                         src={book.imageLinks ===undefined ?'/no-cover.jpg' :book.imageLinks.thumbnail}
 
                                     />
                                     <button>Want to read</button>
@@ -70,10 +70,10 @@ const BookDescription =({match})=> {
                                               <div>
                                                                                                 
 
-                                              {!book.categories?null : book.categories.map(categorie=>{
+                                              {/* {!book.categories?null : book.categories.map(categorie=>{
                                                return(
 
-                                             <h4>{categorie}</h4>)})}
+                                             <h4>{categorie}</h4>)})} */}
                                              </div>
                                              
    

@@ -69,7 +69,7 @@ const Search =()=> {
   
                                     <img
                                     key={book.id}
-                                        src={book.volumeInfo.imageLinks ===  undefined ?"":book.volumeInfo.imageLinks.thumbnail}
+                                        src={book.volumeInfo.imageLinks ===  undefined ?'/no-cover.jpg':book.volumeInfo.imageLinks.thumbnail}
                                         alt="warning"
                                          onChange={onSearch}
 
@@ -92,12 +92,12 @@ const Search =()=> {
 
                 })
                 }
-                              <Pagination 
+                              {/* <Pagination 
                               defaultCurrent={1}
                                total={50} 
                                onChange={handlePage}
                                
-                               />
+                               /> */}
 
 
   

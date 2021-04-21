@@ -1,6 +1,15 @@
-/* .App {
-  text-align: center;
-}
+/* body {
+  background: url("https://miro.medium.com/max/1838/1*fRIaYhhRrNGEECoIocm2Nw.jpeg")
+    no-repeat center center fixed;
+ 
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* background: rgba(255, 255, 255, 0.5); */
+
+/* 
 
 .App-logo {
   height: 40vmin;
