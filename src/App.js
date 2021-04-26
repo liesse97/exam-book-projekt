@@ -10,6 +10,9 @@ import {
   Link
 } from "react-router-dom";
 import styles from './Components/Book.module.scss';
+import { AuthProvider } from './Components/Auth/Auth';
+import Sign from './Components/Auth/Sign';
+import Chat from './Components/chat/chat'
 
 
 
@@ -28,7 +31,8 @@ const App =() => {
                                             alt="warning"
                                             className="error-boundary-warning-img"
                                         /> */}
-    
+      <AuthProvider>
+
 
             <Navbar />
                   {/* Render out a component based on the url */}
@@ -36,12 +40,13 @@ const App =() => {
                   {/* <Route path ='/'  exact component={HomeBooks} /> */}
                    <Route path ='/'  exact component={Search} />
                   {/* <Route path ='/Search' component={Search} /> */}
-                 <Route path ='/MyBooks' component={MyBooks} />
+                 <Route path ='/Chat' component={ Chat} />
                  <Route path ='/book/:id' component={BookDescription} />
                <Route path ='/FilterSelect' component={FilterSelect} />
 
-
    </Switch>
+   </AuthProvider>
+
     </div>
      </Router>
 

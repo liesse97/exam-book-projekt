@@ -1,84 +1,30 @@
   
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState,useContext } from 'react';
   import './Chat.scss';
 // import styles from '../Book.module.scss';
-
-
-
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
-import 'firebase/analytics';
+// import firebase from 'firebase/app';
+import firebase from './../../firebase'
+//import 'firebase/firestore';
+// import 'firebase/auth';
+// import 'firebase/analytics';
 // import ChatRoom from './ChatRoom'
 
-import { useAuthState } from 'react-firebase-hooks/auth';
+// import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+ import { AuthContext } from "../Auth/Auth";
 
 
-if (!firebase.apps.length) {
- firebase.initializeApp({
-    apiKey: "AIzaSyD36AP54yKTlZ_LKPSIhFSYh8Q_vwWii3M",
-    authDomain: "chat-project-c4192.firebaseapp.com",
-    projectId: "chat-project-c4192",
-    storageBucket: "chat-project-c4192.appspot.com",
-    messagingSenderId: "231430346119",
-    appId: "1:231430346119:web:2578fe12c860e97e2eef22",
-    measurementId: "G-T75N3XD66J"
- });
-}else {
-   firebase.app(); // if already initialized, use that one
-}
+const ChatRoom=()=> {
 
-const auth = firebase.auth();
-const firestore = firebase.firestore();
- const analytics = firebase.analytics();
+            const { currentUser} = useContext(AuthContext);
+            //const uid = currentUser.uid
+            //console.log(uid)
 
 
-function Chat() {
-
-  const [user] = useAuthState(auth);
-
-  return (
-    <div className='App'>
-      <header>
-        {/* <h1>💬</h1>
-        <SignOut /> */}
-      </header>
-
-      <section>
-        {user ? <ChatRoom /> : <SignIn />}
-      </section>
-
-    </div>
-  );
-}
-
-function SignIn() {
-
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-  }
-
-  return (
-    <>
-      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>Do not violate the community guidelines or you will be banned for life!</p>
-    </>
-  )
-
-}
-
-function SignOut() {
-  return auth.currentUser && (
-    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
-  )
-}
-
-
-function ChatRoom() {
   const dummy = useRef();
-  const messagesRef = firestore.collection('messages');
+  // const messagesRef = firestore.collection('messages');
+    const messagesRef = firebase.firestore().collection('messages');
+
   const query = messagesRef.orderBy('createdAt').limit(25);
 
   const [messages] = useCollectionData(query, { idField: 'id' });
@@ -89,7 +35,7 @@ function ChatRoom() {
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    const { uid, photoURL } = auth.currentUser;
+    const { uid, photoURL } = firebase.auth().currentUser;
 
     await messagesRef.add({
       text: formValue,
@@ -126,11 +72,12 @@ function ChatRoom() {
 
 
 function ChatMessage(props) {
+   console.log(props)
   const { text, uid,photoURL} = props.message;
 
   //compare between message that were send and recieved
-
-  const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+// if (uid === null) return 'hello';
+  const messageClass = uid === firebase.auth().currentUser.uid ? 'sent' : 'received';
 
   return (<>
     {/* <div className={`message ${messageClass}`}> */}
@@ -143,4 +90,55 @@ function ChatMessage(props) {
 }
 
 
-export default Chat;
+export default ChatRoom;
+
+
+
+//const auth = firebase.auth();
+//  const firestore = firebase.firestore();
+//  const analytics = firebase.analytics();
+
+
+// function Chat() {
+
+//   const [user] = useAuthState(auth);
+
+//   return (
+//     <div className='App'>
+//       {/* <header>
+//         <h1>💬</h1>
+//         <SignOut />
+//       </header> */}
+
+//       <section>
+//         {/* {user ? <ChatRoom /> : <SignIn />} */}
+//         <ChatRoom />
+
+//       </section>
+
+//     </div>
+//   );
+// }
+
+// function SignIn() {
+
+//   const signInWithGoogle = () => {
+//     const provider = new firebase.auth.GoogleAuthProvider();
+//     auth.signInWithPopup(provider);
+//   }
+
+//   return (
+//     <>
+//       <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
+//       <p>Do not violate the community guidelines or you will be banned for life!</p>
+//     </>
+//   )
+
+// }
+
+// function SignOut() {
+//   return auth.currentUser && (
+//     <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+//   )
+// }
+

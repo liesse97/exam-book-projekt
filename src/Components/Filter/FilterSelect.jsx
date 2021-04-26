@@ -12,14 +12,20 @@ const Filter = ()=> {
         const { Option } = Select;
              const [subject, setSubject] = useState([])
 
-             const values =['Science Fiction','Fantasy','Manga','Action', 'Adventure',
+             const values =[
+               'Science Fiction',
+               'Fantasy',
+               'Manga',
+               'Action', 
+               'Adventure',
 'Classics',
-'Comic Book', 'Graphic Novel',
-'Detective', 'Mystery',
-'Fantasy',
+'Comic Book',
+ 'Graphic Novel',
+'Detective', 
+'Mystery',
 'Historical Fiction',
 'Horror',
-'Literary Fiction',]
+'Literary Fiction']
 
             const [lang, setLang] = useState()
             const[country,setCountry]=useState()
@@ -35,7 +41,7 @@ const Filter = ()=> {
 
 
 const  handleChange= async (value) => {
-    const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:${value}&maxResults=40&&printType=books&langRestrict=${lang}& country=${country}`);
+    const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:${value}&maxResults=40&&printType=books&langRestrict=${lang}&lr=lang_${country}`);
              const books=await res.json()
      setSubject(books.items)
      
@@ -74,11 +80,21 @@ const  handleChange= async (value) => {
       <Select defaultValue="Language" style={{ width: 150 }} onChange={handleLang}>
       <Option value="fr">French</Option>
       <Option value="en">English</Option>
+            <Option value="sv">Swedish</Option>
+                        <Option value="zh">China</Option>
+                                                <Option value="tr">turkish</Option>
+
+
+
+
+
          </Select>
 
          <Select defaultValue="Country" style={{ width: 150 }} onChange={handleCountry}>
       <Option value="FR">France</Option>
       <Option value="US">England</Option>
+                  <Option value="SV">Swedish</Option>
+
          </Select>
 
      

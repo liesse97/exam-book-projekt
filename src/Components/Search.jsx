@@ -26,7 +26,7 @@ const Search =()=> {
  
          const onSearch = async (value) => {
              
-            // const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&printType=books&maxResults=40&startIndex=${indexStart}`)
+          //  const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&printType=books&maxResults=40&startIndex=80`)
                        const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&printType=books&maxResults=40`)
  
             const books=await res.json()

@@ -1,8 +1,12 @@
 import React,{useState,useEffect} from 'react';
 import styles from './Book.module.scss';
-import { Select } from 'antd';
-import Chat from './chat/chat'
+import { Select,Rate } from 'antd';
+import {
+  Link
+} from "react-router-dom";
 
+
+const MAX_LENGTH = 100;
 
 
 
@@ -16,7 +20,8 @@ const BookDescription =({match})=> {
       
 
          const [book,setBook]= useState({});
-        //  console.log(book)
+         console.log(book)
+const text= <p>{book.description? book.description.replace(/<[^>]+>/g, ''):null }</p>;
 
     const  BookItem = async () => {
             const res = await fetch(`https://www.googleapis.com/books/v1/volumes/${match.params.id}`)
@@ -31,6 +36,9 @@ const BookDescription =({match})=> {
   setBook(books.volumeInfo)
     
      }
+     
+
+
    
     return (
 <>  
@@ -42,7 +50,8 @@ const BookDescription =({match})=> {
                                          src={book.imageLinks ===undefined ?'/no-cover.jpg' :book.imageLinks.thumbnail}
 
                                     />
-                                    <button>Want to read</button>
+                                    {/* <button>Want to read</button> */}
+                                   
                                      {/* <Select defaultValue="choose" style={{ width: 150 }}>
       <Option value="Want to read">Want to read</Option>
             <Option value="FR">is reading</Option>
@@ -50,7 +59,8 @@ const BookDescription =({match})=> {
          </Select> */}
 
                                      
-                                    <button>Leave Review</button>
+                                    {/* <button>Leave Review</button> */}
+                                    {/* <button>More Information</button> */}
                                     </div>
                                  
 
@@ -60,10 +70,35 @@ const BookDescription =({match})=> {
                                              {book.authors&&book.authors.map(author=>{
                                                return(
                                              <h3>{author}</h3>)})}
+                                             
+
+                                      <Rate allowHalf disabled defaultValue={book.averageRating} />
+
+<div>
+{text.length < 100 ?
+
+
+text.substring(0, 100)
+
+ :
+<p>{text}</p>
+}
+</div>
+
+
+
+
                                             
                                               
 
-                                             <p>{book.description? book.description.replace(/<[^>]+>/g, ''):null }</p>
+                                            
+<div className={styles.btn}>
+                                              <a href={book.canonicalVolumeLink}>
+                                    <button>Preview</button>
+                                    </a>
+                                                                        <button>More Information</button>
+                                                                        </div>
+
                                              
                                            
                                              </div>

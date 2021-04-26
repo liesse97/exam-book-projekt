@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Link
 } from "react-router-dom";
-
+import Sign from '../Auth/Sign'
 import './Navbar.scss'
 
 const Navbar =()=> {
@@ -20,7 +20,7 @@ const Navbar =()=> {
 <li>Filter</li>
  </Link>
 
-        <Link to='/MyBooks'>
+        <Link to='/Chat'>
 {/* <li>My Books</li> */}
 <li>Community</li>
  </Link>
@@ -29,7 +29,9 @@ const Navbar =()=> {
 <li>Search</li>
  </Link> */}
    <Link>
-<li>Login</li>
+{/* <li>Login</li> */}
+<Sign />
+
  </Link>
  
 

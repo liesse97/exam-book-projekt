@@ -28,18 +28,24 @@ body {
 .detail {
   display: flex;
   padding: 0.1em 12em;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   .text {
     max-width: 600px;
-    padding-left: 3em;
+    padding-left: 8em;
   }
   img {
     width: 160px;
     height: 220px;
   }
-  button {
-    display: block;
-    margin-top: 0.7em;
+  .btn {
+    display: flex;
+    justify-content: space-evenly;
+
+    button {
+      display: block;
+      margin-top: 0.7em;
+      margin-right: 7em;
+    }
   }
 }
