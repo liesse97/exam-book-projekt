@@ -23,23 +23,25 @@ const Search =()=> {
 
   
      //update the state of our application every time we do an input
+
  
          const onSearch = async (value) => {
              
           //  const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&printType=books&maxResults=40&startIndex=80`)
-                       const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&printType=books&maxResults=40`)
+                       const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&printType=books&maxResults=40&tartIndex=${indexStart}`)
  
             const books=await res.json()
     setBooks(books.items)
 
      };
+     useEffect (()=>{
+         onSearch()
 
-     //value = undefined until we click on the search part
-     
-//   useEffect(()=>{    
+     },[indexStart])
 
-//  onSearch ();
-//     },[indexStart]);
+   
+
+
 
     
     
@@ -58,7 +60,7 @@ const Search =()=> {
 
 
          
-                {books.map(book => {
+                {!books?'No Books Search': books.map(book => {
                 
                     return (
                             <>
@@ -76,6 +78,7 @@ const Search =()=> {
                                         
 
                                     />
+                                    
                                     {/* </Popover> */}
                                     </Link>
                               
@@ -92,12 +95,12 @@ const Search =()=> {
 
                 })
                 }
-                              {/* <Pagination 
+                              <Pagination 
                               defaultCurrent={1}
                                total={50} 
                                onChange={handlePage}
                                
-                               /> */}
+                               />
 
 
   

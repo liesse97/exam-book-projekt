@@ -25,6 +25,12 @@ const Navbar =()=> {
 <li>Community</li>
  </Link>
 
+    <Link to='/AddBooks'>
+{/* <li>My Books</li> */}
+<li>Add Books</li>
+ </Link>
+
+
     {/* <Link to='/Search'>
 <li>Search</li>
  </Link> */}

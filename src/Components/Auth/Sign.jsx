@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
-import firebase from "./../../firebase.js";
+ import firebase from "./../../firebase";
 import { AuthContext } from "./Auth";
-import ChatRoom from './../chat/chat';
-import Filter from '../Filter/FilterSelect'
+import {db, auth} from './../../firebase'
+// import ChatRoom from './../chat/chat';
+// import Filter from '../Filter/FilterSelect'
 
 
 // const auth = firebase.auth();
@@ -19,13 +20,11 @@ const SignIn =()=> {
 //You're mixing namespaces with instance:('firebase.auth() //error:GoogleAuthProvider is not a function)
 // the firebaseApp is just a container for configuration data. It is not how you create a provider instance.
   const signInWithGoogle = () => {
-    const provider = 
-    new firebase
-    .auth
-    .GoogleAuthProvider();
-    return firebase.auth()
-    .signInWithPopup(provider).then ((res)=>{
-      return res.user;
+    const provider =  new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).then ( function(res){
+      //  return res.user;
+      const user = res.user
+      console.log(user)
 
     }).catch((er)=>{
       return er;
@@ -43,8 +42,8 @@ const SignIn =()=> {
 }
 
 const SignOut =()=> {
-  return firebase.auth().currentUser && (
-    <button className="sign-out" onClick={() => firebase.auth().signOut()}>Sign Out</button>
+  return auth.currentUser && (
+    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
   )
 }
 return (

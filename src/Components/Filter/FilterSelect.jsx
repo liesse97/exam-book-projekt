@@ -41,7 +41,7 @@ const Filter = ()=> {
 
 
 const  handleChange= async (value) => {
-    const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:${value}&maxResults=40&&printType=books&langRestrict=${lang}&lr=lang_${country}`);
+    const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:${value}&maxResults=40&&printType=books&langRestrict=${lang}&components=country:${country}`);
              const books=await res.json()
      setSubject(books.items)
      
@@ -109,7 +109,7 @@ const  handleChange= async (value) => {
                        <Link to={`/book/${book.id}`}>
                                     <img
                                     key={book.id}
-                                        src={book.volumeInfo.imageLinks ===  undefined ?"":book.volumeInfo.imageLinks.thumbnail}
+                                        src={book.volumeInfo.imageLinks ===  undefined ?'/no-cover.jpg':book.volumeInfo.imageLinks.thumbnail}
                                         alt="warning"
                                         
 

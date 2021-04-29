@@ -12,6 +12,7 @@
 }
 .sent {
   flex-direction: row-reverse;
+  // width: 360px;
   p {
     color: #ffff;
     background: #587fbe;
@@ -19,6 +20,7 @@
     box-sizing: border-box;
     border-radius: 15px;
     padding: 0.45em;
+    width: fit-content;
   }
 }
 
@@ -34,7 +36,7 @@
 .Form {
   form {
     height: 10vh;
-    position: fixed;
+    // position: fixed;
     bottom: 0;
     // background-color: rgb(24, 23, 23);
     width: 100%;
@@ -46,7 +48,7 @@
     padding: 0 4em;
     input {
       //   width: 100%;
-      //   // max-width: 800px;
+      // max-width: 100px;
       padding: 0 1em;
     }
     button {

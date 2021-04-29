@@ -4,6 +4,8 @@ import React, { useRef, useState,useContext } from 'react';
 // import styles from '../Book.module.scss';
 // import firebase from 'firebase/app';
 import firebase from './../../firebase'
+import {db, auth} from './../../firebase'
+
 //import 'firebase/firestore';
 // import 'firebase/auth';
 // import 'firebase/analytics';
@@ -11,19 +13,19 @@ import firebase from './../../firebase'
 
 // import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
- import { AuthContext } from "../Auth/Auth";
+ import { AuthContext } from "../Auth/Auth"
 
 
 const ChatRoom=()=> {
 
-            const { currentUser} = useContext(AuthContext);
             //const uid = currentUser.uid
             //console.log(uid)
+            const { currentUser} = useContext(AuthContext);
 
 
   const dummy = useRef();
   // const messagesRef = firestore.collection('messages');
-    const messagesRef = firebase.firestore().collection('messages');
+    const messagesRef = db.collection('messages');
 
   const query = messagesRef.orderBy('createdAt').limit(25);
 
@@ -33,13 +35,16 @@ const ChatRoom=()=> {
 
 
   const sendMessage = async (e) => {
+    
     e.preventDefault();
 
-    const { uid, photoURL } = firebase.auth().currentUser;
+    const { uid, photoURL } = auth.currentUser;
 
     await messagesRef.add({
       text: formValue,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            createdAt: db.FieldValue.serverTimestamp(),
+
       uid,
       photoURL
     })
@@ -76,8 +81,8 @@ function ChatMessage(props) {
   const { text, uid,photoURL} = props.message;
 
   //compare between message that were send and recieved
-// if (uid === null) return 'hello';
-  const messageClass = uid === firebase.auth().currentUser.uid ? 'sent' : 'received';
+if (uid == null) return 'hello';
+  const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
   return (<>
     {/* <div className={`message ${messageClass}`}> */}

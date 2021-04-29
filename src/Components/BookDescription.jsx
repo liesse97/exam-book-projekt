@@ -21,6 +21,7 @@ const BookDescription =({match})=> {
 
          const [book,setBook]= useState({});
          console.log(book)
+
 const text= <p>{book.description? book.description.replace(/<[^>]+>/g, ''):null }</p>;
 
     const  BookItem = async () => {
@@ -36,7 +37,10 @@ const text= <p>{book.description? book.description.replace(/<[^>]+>/g, ''):null 
   setBook(books.volumeInfo)
     
      }
-     
+     const books=(e)=>{
+setBook('want to read')
+     }
+
 
 
    
@@ -50,7 +54,7 @@ const text= <p>{book.description? book.description.replace(/<[^>]+>/g, ''):null 
                                          src={book.imageLinks ===undefined ?'/no-cover.jpg' :book.imageLinks.thumbnail}
 
                                     />
-                                    {/* <button>Want to read</button> */}
+                                    {/* <button onclick={books}>Want to read</button> */}
                                    
                                      {/* <Select defaultValue="choose" style={{ width: 150 }}>
       <Option value="Want to read">Want to read</Option>
@@ -85,11 +89,6 @@ text.substring(0, 100)
 }
 </div>
 
-
-
-
-                                            
-                                              
 
                                             
 <div className={styles.btn}>

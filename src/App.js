@@ -12,7 +12,8 @@ import {
 import styles from './Components/Book.module.scss';
 import { AuthProvider } from './Components/Auth/Auth';
 import Sign from './Components/Auth/Sign';
-import Chat from './Components/chat/chat'
+import Chat from './Components/chat/chat';
+import AddBooks from './Components/AddBooks'
 
 
 
@@ -43,6 +44,9 @@ const App =() => {
                  <Route path ='/Chat' component={ Chat} />
                  <Route path ='/book/:id' component={BookDescription} />
                <Route path ='/FilterSelect' component={FilterSelect} />
+                              <Route path ='/AddBooks' component={AddBooks} />
+
+               
 
    </Switch>
    </AuthProvider>
