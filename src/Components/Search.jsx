@@ -7,17 +7,25 @@ import {
 import styles from './Book.module.scss';
 
 const Search =()=> {
+     const book = 
+        {
+            name: 'Peter Pan',
+            author: 'Walt Disney',
+            picture: '/peter-pan.jpg',
+
+        }
+
       const { Search } = Input;
 
          const [books,setBooks]= useState([]);
-         const[indexStart,setIndexStart]=useState(0);
+        //  const[indexStart,setIndexStart]=useState(0);
         //  const content= (<di>hello</di>)
          
 
-         const handlePage= e =>{
-           let index= (e-1)*40;
-             setIndexStart(index)
-         }
+        //  const handlePage= e =>{
+        //    let index= (e-1)*40;
+        //      setIndexStart(index)
+        //  }
 
     
 
@@ -27,17 +35,17 @@ const Search =()=> {
  
          const onSearch = async (value) => {
              
-          //  const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&printType=books&maxResults=40&startIndex=80`)
-                       const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&printType=books&maxResults=40&tartIndex=${indexStart}`)
+          const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&printType=books&maxResults=40`)
+                      // const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&printType=books&maxResults=40&tartIndex=${indexStart}`)
  
             const books=await res.json()
     setBooks(books.items)
 
      };
-     useEffect (()=>{
-         onSearch()
+    //  useEffect (()=>{
+    //      onSearch()
 
-     },[indexStart])
+    //  },[indexStart])
 
    
 
@@ -95,12 +103,12 @@ const Search =()=> {
 
                 })
                 }
-                              <Pagination 
+                              {/* <Pagination 
                               defaultCurrent={1}
                                total={50} 
                                onChange={handlePage}
                                
-                               />
+                               /> */}
 
 
   

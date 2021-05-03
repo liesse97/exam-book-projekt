@@ -140,7 +140,7 @@ const AddBooks =()=> {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />i
         {/* <input type="file"  value={image} onChange={handleChange} /> */}
 
         <button onClick={() => addBooks({ title,description, id: uuidv4() })}>
