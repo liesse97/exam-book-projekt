@@ -3,6 +3,9 @@
   // align-items: start;
   // overflow: hidden;
   padding: 0.5em 5em;
+  @media (max-width: 700px) {
+    padding: 0;
+  }
   img {
     border-radius: 50px;
     width: 40px;

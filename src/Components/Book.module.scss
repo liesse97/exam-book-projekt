@@ -11,11 +11,22 @@ body {
 .searchBooks {
   text-align: center;
   margin: 0 94px;
+  @media (max-width: 700px) {
+    margin: 0;
+    padding: 0 1em;
+  }
   .search {
     display: flex;
-
     justify-content: center;
   }
+  // .ant-input-search-button {
+  //   height: 55px !important;
+  // }
+
+  // input .ant-input {
+  //   font-size: 30px !important;
+  // }
+
   img {
     // padding: 0.6em;
     margin: 1.5em;
@@ -29,23 +40,44 @@ body {
   display: flex;
   padding: 0.1em 12em;
   // justify-content: space-between;
+  @media (max-width: 700px) {
+    padding: 0;
+  }
 
   .text {
     max-width: 600px;
     padding-left: 8em;
+
+    @media (max-width: 700px) {
+      padding-left: 2em;
+      max-width: 300px;
+    }
   }
   img {
     width: 160px;
     height: 220px;
+
+    @media (max-width: 700px) {
+      width: 100px;
+      height: 200px;
+      padding-left: 1em;
+    }
   }
   .btn {
     display: flex;
     justify-content: space-evenly;
+    @media (max-width: 700px) {
+      justify-content: space-around;
+      max-width: 300px;
+    }
 
     button {
       display: block;
       margin-top: 0.7em;
       margin-right: 7em;
+      @media (max-width: 700px) {
+        margin-right: 0;
+      }
     }
   }
 }
